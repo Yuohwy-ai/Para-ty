@@ -1,188 +1,433 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>¡Feliz Cumple, Judith D!</title>
-  <style>
-    :root{
-      --bg1:#0f1020;--bg2:#1b1e3b;--ac1:#8a5cff;--ac2:#00d4ff;--ac3:#ff7ac6;--text:#e9ecf1;
-      --glass: rgba(255,255,255,.08);
-    }
-    *{box-sizing:border-box}
-    body{
-      margin:0;min-height:100vh;overflow:hidden;color:var(--text);
-      background: radial-gradient(1200px 800px at 10% -10%, #273069 0%, transparent 60%),
-                  radial-gradient(1000px 800px at 110% 10%, #2b0d4a 0%, transparent 60%),
-                  linear-gradient(135deg,var(--bg1),var(--bg2));
-      font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      display:grid;place-items:center;padding:24px;
-    }
-    .scene{position:relative;width:min(920px,100%);}
-    canvas#confetti{position:fixed;inset:0;pointer-events:none;z-index:1}
-    .balloon{position:absolute;bottom:-20vh;width:120px;height:150px;border-radius:60% 60% 60% 60%/70% 70% 40% 40%;
-      filter: drop-shadow(0 10px 30px rgba(0,0,0,.4));opacity:.85;animation: floatUp linear infinite;
-    }
-    .balloon:after{content:"";position:absolute;left:50%;bottom:-30px;width:2px;height:34px;background:rgba(255,255,255,.6)}
-    .b1{left:4%; background: linear-gradient(145deg, #ff9ad6, #ff5aa7); animation-duration: 18s}
-    .b2{left:20%; background: linear-gradient(145deg, #97ffdf, #00d9b8); animation-duration: 20s; animation-delay: -4s}
-    .b3{left:80%; background: linear-gradient(145deg, #ffd182, #ff8e2b); animation-duration: 17s; animation-delay: -2s}
-    .b4{left:64%; background: linear-gradient(145deg, #9db2ff, #5a7bff); animation-duration: 22s; animation-delay: -6s}
-    @keyframes floatUp{0%{transform:translateY(0) rotate(2deg)}100%{transform:translateY(-120vh) rotate(-6deg)}}
-    .card{position:relative;z-index:2;background:var(--glass);backdrop-filter: blur(10px);
-      border:1px solid rgba(255,255,255,.12); border-radius:24px; padding:28px; box-shadow: 0 20px 60px rgba(0,0,0,.35);
-    }
-    .header{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
-    .avatar{
-      width:70px;height:70px;border-radius:50%;overflow:hidden;
-      border:2px solid rgba(255,255,255,.6);
-      display:grid;place-items:center;
-      background: var(--glass);
-    }
-    .avatar img{width:100%;height:100%;object-fit:cover;}
-    h1{margin:4px 0 0;font-size:clamp(28px,5vw,40px);line-height:1.1}
-    .spark{background: linear-gradient(90deg,var(--ac2),var(--ac3),var(--ac1));
-      -webkit-background-clip:text;background-clip:text;color:transparent;
-      text-shadow: 0 0 30px rgba(255,255,255,.18);}
-    .sub{opacity:.9;margin:8px 0 16px;font-size:clamp(14px,2.6vw,18px)}
-    .chip{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.16);
-      background: rgba(255,255,255,.06);font-size:14px;margin:6px 8px 0 0}
-    .heart{filter:drop-shadow(0 0 12px rgba(255,122,198,.6))}
-    .wish{margin:18px 0 2px;display:grid;gap:10px}
-    .wish li{list-style:none;padding:12px 14px;border-radius:14px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12)}
-    .actions{margin-top:18px;display:flex;gap:12px;flex-wrap:wrap}
-    .btn{cursor:pointer;border:none;border-radius:14px;padding:12px 16px;font-weight:700;color:#0b0b14;
-      background: linear-gradient(135deg,var(--ac2),var(--ac3)); box-shadow:0 10px 25px rgba(0,0,0,.3)}
-    .btn.secondary{background: linear-gradient(135deg,#ffffff,#d6e4ff);}
-    .footer{margin-top:14px;font-size:13px;opacity:.8}
-    .twinkle{position:absolute;width:6px;height:6px;border-radius:50%;opacity:.9;animation: tw 2.2s infinite ease-in-out}
-    @keyframes tw{0%{transform:scale(.4);opacity:.2}50%{transform:scale(1);opacity:1}100%{transform:scale(.4);opacity:.2}}
-    @media (max-width:480px){
-      .card{padding:22px}
-      .wish li{padding:10px 12px}
-    }
-  </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>FuturLove - Poema</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+<style>
+  /* Reset y estilos base */
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{
+    font-family: 'Orbitron', sans-serif;
+    /* CAMBIO: Paleta de colores romántica */
+    background: linear-gradient(135deg,#4a003d,#7d0069,#ff1e56);
+    color:#fff;
+    overflow:hidden;
+  }
+
+  /* Contenedor general */
+  .app {
+    position:relative;
+    width:100%;
+    height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+
+  /* Welcome screen */
+  .welcome-screen{
+    position:absolute;
+    inset:0;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:18px;
+    z-index:8;
+    padding:26px;
+    text-align:center;
+    /* CAMBIO: Fondo con tinte púrpura/rosado */
+    background: linear-gradient(180deg, rgba(40,0,30,0.25), rgba(60,0,40,0.15));
+    backdrop-filter: blur(6px);
+  }
+
+  .welcome-title{
+    font-size:2.2rem;
+    line-height:1.05;
+    /* CAMBIO: Degradado de texto más romántico */
+    background: linear-gradient(45deg,#ff1e56,#ff4fa2,#9b1fff);
+    background-size:400% 400%;
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    animation: shine 8s ease infinite;
+  }
+  @keyframes shine{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+
+  .welcome-image-large{
+    width:220px;
+    height:220px;
+    border-radius:50%;
+    overflow:hidden;
+    border:4px solid rgba(255,255,255,0.12);
+    /* CAMBIO: Sombra e iluminación con animación de latido */
+    box-shadow: 0 0 25px rgba(255,0,100,0.4), inset 0 0 15px rgba(255,0,150,0.2);
+    animation: heartbeat 2.5s ease-in-out infinite;
+  }
+  .welcome-image-large img{width:100%;height:100%;object-fit:cover;display:block}
+
+  /* NUEVO: Animación de latido e iluminación */
+  @keyframes heartbeat {
+    0%   { transform: scale(1); box-shadow: 0 0 25px rgba(255,0,100,0.4), inset 0 0 15px rgba(255,0,150,0.2); }
+    14%  { transform: scale(1.05); box-shadow: 0 0 35px rgba(255,0,100,0.6), inset 0 0 20px rgba(255,0,150,0.3); }
+    28%  { transform: scale(1); box-shadow: 0 0 25px rgba(255,0,100,0.4), inset 0 0 15px rgba(255,0,150,0.2); }
+    42%  { transform: scale(1.05); box-shadow: 0 0 35px rgba(255,0,100,0.6), inset 0 0 20px rgba(255,0,150,0.3); }
+    70%  { transform: scale(1); box-shadow: 0 0 25px rgba(255,0,100,0.4), inset 0 0 15px rgba(255,0,150,0.2); }
+  }
+
+  .entry-text{
+    max-width:760px;
+    font-family: 'Arial', sans-serif;
+    color: rgba(255,220,240,0.9);
+    font-size:1rem;
+    opacity:0.95;
+  }
+
+  .start-btn{
+    padding:14px 30px;
+    border-radius:14px;
+    border:none;
+    cursor:pointer;
+    font-size:1rem;
+    color:#fff;
+    /* CAMBIO: Degradado y sombra del botón */
+    background: linear-gradient(45deg,#ff1e56,#ff4fa2,#9b1fff);
+    box-shadow: 0 0 25px rgba(255,0,128,0.7);
+    transition: transform .15s;
+  }
+  .start-btn:active{transform:scale(.98)}
+
+  /* Panel del poema */
+  .poem-screen{
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:40px;
+    z-index:2;
+    visibility:hidden;
+    opacity:0;
+    transition: opacity .5s ease, visibility .5s ease;
+  }
+  .poem-screen.show{visibility:visible;opacity:1;z-index:9}
+
+  .poem-panel{
+    width:min(880px,92%);
+    max-height:84vh;
+    /* CAMBIO: Fondo, borde y sombra del panel */
+    background: rgba(255,80,140,0.07);
+    border-radius:18px;
+    padding:28px;
+    border:1px solid rgba(255,120,180,0.15);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px rgba(100,0,50,0.6);
+    overflow:auto;
+    position:relative;
+  }
+
+  .poem-title{
+    font-size:1.6rem;
+    margin-bottom:12px;
+    /* CAMBIO: Degradado del título */
+    background: linear-gradient(45deg,#ff1e56,#ff4fa2,#9b1fff);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    font-weight:700;
+  }
+
+  .poem-content{
+    font-family: 'Arial', sans-serif;
+    color:rgba(255,240,245,0.95);
+    line-height:1.8;
+    font-size:1.05rem;
+    padding-right:10px;
+  }
+
+  /* Imagen flotante */
+  .floating-avatar{
+    position:fixed;
+    width:80px;
+    height:80px;
+    border-radius:50%;
+    overflow:hidden;
+    right:28px;
+    top:28px;
+    border:3px solid rgba(255,255,255,0.15);
+    /* CAMBIO: Sombra del avatar y animación */
+    box-shadow: 0 6px 18px rgba(255,0,100,0.5), 0 0 30px rgba(255,0,150,0.45);
+    transition: width .45s ease, height .45s ease, right .45s ease, top .45s ease, transform .35s ease;
+    z-index:11;
+    display:none;
+    background:linear-gradient(180deg, rgba(255,40,100,0.2), rgba(255,100,180,0.1));
+    animation: heartbeat 2.5s ease-in-out infinite; /* Animación aplicada también aquí */
+  }
+  .floating-avatar img{width:100%;height:100%;object-fit:cover;display:block}
+
+  .floating-avatar.large{ width:110px; height:110px; right:24px; top:20px; }
+
+  /* Botón flotante "Me gustó" (ya tenía buen color) */
+  .like-btn{
+    position:fixed;
+    right:28px;
+    bottom:28px;
+    z-index:12;
+    padding:12px 16px;
+    border-radius:999px;
+    border:none;
+    font-size:1rem;
+    background: linear-gradient(45deg,#ff1e56,#ff66aa);
+    color:#fff;
+    box-shadow: 0 8px 24px rgba(255,0,120,0.4);
+    cursor:pointer;
+    display:none;
+  }
+
+  /* Contenedor de circulitos de fondo */
+  .circulos{
+    position:fixed;
+    inset:0;
+    z-index:1;
+    pointer-events:none;
+  }
+  .circulos span{
+    position:absolute;
+    display:block;
+    width:20px;height:20px;
+    /* CAMBIO: Color de los círculos */
+    background: rgba(255,0,100,0.15);
+    border-radius:50%;
+    animation: flotar 20s linear infinite;
+  }
+  .circulos span:nth-child(1) { left: 25%; animation-delay: 0s; top: 90%; }
+  .circulos span:nth-child(2) { left: 10%; animation-delay: 2s; top: 95%; }
+  .circulos span:nth-child(3) { left: 70%; animation-delay: 4s; top: 92%; }
+  .circulos span:nth-child(4) { left: 40%; animation-delay: 1s; top: 98%; }
+  .circulos span:nth-child(5) { left: 90%; animation-delay: 3s; top: 97%; }
+  @keyframes flotar{0%{transform:translateY(0) scale(1);opacity:1}100%{transform:translateY(-1000px) scale(1.5);opacity:0}}
+
+  /* Pequeños ajustes responsive */
+  @media (max-width:540px){
+    .welcome-image-large{width:150px;height:150px}
+    .floating-avatar.large{ right:12px; top:12px; width:88px; height:88px }
+    .poem-panel{ padding:18px }
+  }
+</style>
 </head>
 <body>
-  <canvas id="confetti"></canvas>
-  <div class="balloon b1"></div>
-  <div class="balloon b2"></div>
-  <div class="balloon b3"></div>
-  <div class="balloon b4"></div>
+  <div class="app">
 
-  <div class="scene">
-    <div class="card">
-      <div class="header">
-        <div class="avatar">
-          <!-- FOTO CORREGIDA -->
-          <img src="https://dl.dropboxusercontent.com/scl/fi/lcpb0ic7w3oq1tjk3zuiv/FB_IMG_1756348455756.jpg?rlkey=c6nn0qu3mc6qj0n6f1ylqhl0t" alt="Foto de Judith D">
-        </div>
-        <div>
-          <h1>¡Feliz Cumple, <span class="spark">Judith D</span>! 🎉🎂</h1>
-          <p class="sub" id="typewriter">Que este nuevo año te encuentre llena de alegría, salud y logros. 💫</p>
-          <div class="chip"><span class="heart">💖</span> Buena vibra para tus estudios</div>
-          <div class="chip">📚 Enfoque + Constancia = Éxito</div>
-        </div>
-      </div>
-
-      <ul class="wish">
-        <li>🎯 Que alcances cada meta académica que te propongas.</li>
-        <li>🧠 Que las ideas brillantes te visiten cuando más las necesites.</li>
-        <li>🤝 Que te rodee gente que impulse tus sueños.</li>
-        <li>🌟 Y que nunca falten razones para sonreír.</li>
-      </ul>
-
-      <div class="actions">
-        <!-- BOTÓN DE MÚSICA -->
-        <button class="btn" id="btnConfetti">🎵 Reproducir música</button>
-        <button class="btn secondary" id="btnMensaje">Mensaje cariñoso</button>
-      </div>
-
-      <p class="footer">Con cariño, de parte de quien te admira un montón.</p>
+    <div class="circulos" aria-hidden="true">
+      <span></span><span></span><span></span><span></span><span></span>
     </div>
-  </div>
 
-  <script>
-    const tw = document.getElementById('typewriter');
-    const full = tw.textContent.trim();
-    tw.textContent = '';
-    let i = 0;
-    function type(){
-      if(i <= full.length){
-        tw.textContent = full.slice(0, i++);
-        setTimeout(type, 28);
+    <section class="welcome-screen" id="welcomeScreen">
+      <h1 class="welcome-title">Para la persona muy muy especial la que está aquí abajito ☺️☺️</h1>
+
+      <div class="welcome-image-large" id="welcomeImage">
+        <img src="https://i.ibb.co/QvqFTD0p/Messenger-creation-99229-E80-FC1-C-422-F-82-E6-771-EB6-BA4-AC2.jpg" alt="Portada">
+      </div>
+
+      <p class="entry-text">
+        Si quieres, puedes cerrar los ojos un instante y dejar que las palabras lleguen. 
+        Cuando estés listo, pulsa <strong>"El botoncito de abajo ☺️"</strong> y deja que mis palabritas te digan algo muy especial 
+      </p>
+
+      <button class="start-btn" id="startPoemBtn">Empezar la Poema</button>
+    </section>
+
+    <section class="poem-screen" id="poemScreen" aria-hidden="true">
+      <article class="poem-panel" id="poemPanel" tabindex="0">
+        <h2 class="poem-title">Antes de las Palabras</h2>
+        <div class="poem-content" id="poemContent">
+          <p>Recuerdo el silencio que nos separó,
+un silencio de dos años, tan pesado, tan largo.<br>
+          En la distancia, el tiempo se estiró,
+y a veces creí que el recuerdo de nosotros se había esfumado.
+No hubo peleas ni palabras duras, solo un adiós sin aviso,<br>
+          un final inesperado para una historia que apenas comenzaba.
+Cada día fue una batalla, una lucha por olvidar,<br>
+          pero por más que lo intentaba, tu imagen seguía ahí,
+intacta, en lo más profundo de mi ser.</p>
+          <p>Y de repente, como un milagro, volviste.
+Cuando nuestros ojos se encontraron de nuevo,
+el mundo se detuvo.
+Las universidades, los kilómetros, el tiempo...<br>
+          todo desapareció.
+En ese instante, solo existías tú,
+con esa sonrisa que aún me desarma,
+y esos ojos que siempre he considerado mi hogar.
+Verte de nuevo fue como ver el amanecer después de una larga noche<br>
+          como respirar después de haber estado conteniendo el aire.
+Fue la confirmación de que este sentimiento nunca murió,
+solo estaba esperando el momento de despertar.<br>
+          Recuerdo cómo me llenaba de vida tu presencia en el pasado.
+Cómo con una simple mirada, mis preocupaciones desaparecían.
+Y ahora, con esta nueva conexión,
+siento que todo ha cobrado un nuevo sentido.</p>
+          <p>No quiero que esto sea un recuerdo más en nuestra historia,
+no quiero que la distancia nos vuelva a separar.
+No voy a permitirlo.
+Quiero que sepas que en cada uno de mis días,
+me llenas de una felicidad tan intensa,
+que por primera vez en mucho tiempo<br>
+          no tengo miedo de lo que vendrá.
+Quiero crear contigo una historia diferente, una historia sin pausas,
+sin despedidas, una historia que perdure para siempre.<br>
+         No puedo prometerte que no habrá desafíos,
+pero sí puedo prometerte que nunca te sentirás sola.
+Aunque estemos en universidades distintas, a kilómetros de distancia,
+siempre voy a estar ahí para ti.
+Quiero que te sientas segura conmigo,
+que sepas que mi corazón es tu refugio,<br>
+          un lugar donde puedes ser tú misma sin miedo a nada.
+Confía en mí, Judith, porque nunca,
+jamás, te decepcionaré.</p>
+          <p>Cuando te escribo, me imagino a ti,
+viendo tu sonrisa al leer mis mensajes,
+y me lleno de una alegría inmensa,
+una alegría que me dan ganas de gritar al mundo
+lo afortunado que soy de tenerte.
+Eres la calma en mi tormenta,
+el amor que necesito, la paz que me completa.<br>
+          Cada vez que me hablas de tus días, de tus sueños, de tus gustos como los pesitos, mi alma te abraza, mucho mucho 
+y me dan ganas de volar hasta donde estés y susurrarte al oído lo mucho que te quiero a mi lado.<br>
+          Prometo que haremos que cada momento cuente,
+que los encuentros cortos se conviertan en nuestra aventura,
+y que cada mensaje sea un puente entre nuestros corazones.
+Estoy dispuesto a construir un futuro contigo,<br>
+          a escribir cada capítulo juntos,
+a llenar cada página con risas,
+con besitos ☺️☺️ y con sueños compartidos.</p>
+          <p>Me gustaría que me des la oportunidad
+de enamorarte 😊😊 a un que no sepa nada de eso, cada día, te demostrare a mi estilo que este sentimiento  es real y que no tiene límites.🥹🥹😍
+Quiero que el mundo entero sepa lo que siento por ti, yo seré yo mismo contigo e me gustaría que tú seas tu 🥹!No me importa,yo, ya, decidí estar contigo y estar a tu lado¡ y compartir contigo los más bellos atardeceres,
+las más hermosas noches estrelladas.<br>
+          Porque cuando me miras, Judith, siento que este sentimiento crece mucho mucho no es una casualidad, sino el destino que por fin nos da una segunda oportunidad. Quiero que sepas, Judith, que estoy aquí para quedarme.<br>
+          te mando 😊😊 más puro "te quiero" que nunca se ha dicho,<br>
+          pero que el corazón, a gritos, sintió.</p>
+        </div>
+      </article>
+    </section>
+
+    <div class="floating-avatar" id="floatingAvatar" aria-hidden="true">
+      <img src="https://i.ibb.co/QvqFTD0p/Messenger-creation-99229-E80-FC1-C-422-F-82-E6-771-EB6-BA4-AC2.jpg" alt="Avatar">
+    </div>
+
+    <button class="like-btn" id="likeBtn" title="Enviar en WhatsApp">💖 Me gustó</button>
+
+    <audio id="poemAudio" preload="auto">
+      <source src="https://www.dropbox.com/scl/fi/x7alx08aam4ez70h4ayy5/Rema-Selena-Gomez-Calm-Down-Remix-Lyrics-Espa-ol-Video-Official.mp3?rlkey=w5ia29h0zgmr2phb6k03sx7bl&dl=1" type="audio/mpeg">
+      Tu navegador no soporta audio.
+    </audio>
+
+    <div class="heart-layer" id="heartLayer"></div>
+    <div class="center-note" style="display:none">Toca / haz clic en cualquier parte 💖</div>
+
+    <script>
+    (function(){
+      const layer = document.getElementById('heartLayer');
+      const COLORS = ["#ff4d6d","#ff6b85","#ff7ab6","#ff9ad0","#ffb3c7","#ff758f","#ff5f7a","#ff8fb1"];
+      const HEART_SVG = (fill) => `<svg viewBox="0 0 32 29.6" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path fill="${fill}" d="M23.6 0c-2.9 0-5.4 1.5-6.6 3.8C15.8 1.5 13.3 0 10.4 0 4.7 0 0 4.8 0 10.6c0 6.9 5.3 12.1 13.3 18.4L16 29.6l2.7-0.6C26.7 22.7 32 17.5 32 10.6 32 4.8 27.3 0 23.6 0z"/></svg>`;
+      function createHeart(x, y) {
+        const el = document.createElement('span');
+        el.className = 'heart';
+        const sizeClass = Math.random();
+        if (sizeClass < 0.25) el.classList.add('small');
+        else if (sizeClass > 0.85) el.classList.add('large');
+        if (Math.random() < 0.35) el.classList.add('pop');
+        const color = COLORS[Math.floor(Math.random() * COLORS.length)];
+        el.innerHTML = HEART_SVG(color);
+        const rectSize = 36;
+        const left = x - (rectSize / 2);
+        const top  = y - (rectSize / 2);
+        el.style.left = left + 'px';
+        el.style.top = top + 'px';
+        const initialRotate = (Math.random() * 40) - 20;
+        el.style.transform = `rotate(${initialRotate}deg)`;
+        const dur = 900 + Math.floor(Math.random() * 700);
+        el.style.animationDuration = dur + 'ms';
+        el.style.animationDelay = (Math.random() * 80) + 'ms';
+        layer.appendChild(el);
+        el.addEventListener('animationend', () => {
+          if (el && el.parentElement) el.parentElement.removeChild(el);
+        }, { once: true });
       }
-    }
-    type();
-
-    const canvas = document.getElementById('confetti');
-    const ctx = canvas.getContext('2d');
-    let W, H, pieces = [];
-    function resize(){ W = canvas.width = innerWidth; H = canvas.height = innerHeight }
-    addEventListener('resize', resize); resize();
-
-    function addPiece(x, y){
-      pieces.push({
-        x, y,
-        size: Math.random()*8+6,
-        vy: Math.random()*2+1,
-        vx: (Math.random()-0.5)*1.6,
-        rot: Math.random()*Math.PI,
-        vr: (Math.random()-0.5)*0.2,
-        shape: Math.random()>0.5?'rect':'circle',
-        hue: Math.floor(Math.random()*360)
-      });
-    }
-    function burstConfetti(x=W/2, y=H/3){
-      for(let i=0;i<140;i++) addPiece(x + (Math.random()-0.5)*80, y + (Math.random()-0.5)*40);
-    }
-    function tick(){
-      ctx.clearRect(0,0,W,H);
-      pieces.forEach((p)=>{
-        p.vy += 0.01;
-        p.x += p.vx; p.y += p.vy; p.rot += p.vr;
-        if(p.y > H+20) {
-          p.y = -10; p.x = Math.random()*W; p.vy = Math.random()*2+1;
+      function handlePointer(x, y) {
+        const count = 1 + Math.floor(Math.random() * 3);
+        for (let i=0; i<count; i++){
+          const rx = x + (Math.random() * 40 - 20);
+          const ry = y + (Math.random() * 40 - 20);
+          createHeart(rx, ry);
         }
-        ctx.save();
-        ctx.translate(p.x, p.y); ctx.rotate(p.rot);
-        ctx.fillStyle = `hsl(${p.hue} 90% 60%)`;
-        if(p.shape==='rect') ctx.fillRect(-p.size/2,-p.size/2,p.size,p.size);
-        else { ctx.beginPath(); ctx.arc(0,0,p.size/2,0,Math.PI*2); ctx.fill(); }
-        ctx.restore();
-      });
-      requestAnimationFrame(tick);
-    }
-    tick();
-    setTimeout(()=>burstConfetti(), 500);
-
-    // --- AUDIO DIRECTO DE DROPBOX ---
-    const audio = new Audio("https://dl.dropboxusercontent.com/scl/fi/jopup3fb8tarb9iu69gid/Counting-Stars-MP3_160K.mp3?rlkey=426nj25ydrh37enih9bfm46xp");
-
-    document.getElementById('btnConfetti').addEventListener('click', (e)=>{
-      const r = e.currentTarget.getBoundingClientRect();
-      burstConfetti(r.left + r.width/2, r.top + scrollY);
-      audio.play().catch(()=>alert("Activa el sonido y vuelve a tocar 🎵"));
-    });
-
-    document.getElementById('btnMensaje').addEventListener('click',()=>{
-      const lines = [
-        'Me alegra un montón coincidir contigo. ✨',
-        'Admiro tu dedicación y la luz que llevas a clase. 💡',
-        'Que este sea tu año de brillar fuerte, Judith. 🌟' 
-      ];
-      alert(lines[Math.floor(Math.random()*lines.length)]);
-    });
-
-    for(let k=0;k<18;k++){
-      const d=document.createElement('div');
-      d.className='twinkle';
-      d.style.left=Math.random()*100+'%';
-      d.style.top=Math.random()*100+'%';
-      d.style.background=`hsl(${Math.floor(Math.random()*360)} 90% 70%)`;
-      d.style.animationDelay=(Math.random()*2)+'s';
-      document.body.appendChild(d);
-    }
-  </script>
+      }
+      window.addEventListener('click', (e) => { handlePointer(e.clientX, e.clientY); });
+      window.addEventListener('touchstart', (e) => { [...e.touches].forEach(t => handlePointer(t.clientX,t.clientY)) },{passive:true});
+      window.addEventListener('touchmove', (e) => { [...e.touches].forEach(t => { if (Math.random() < 0.18) handlePointer(t.clientX, t.clientY) }) },{passive:true});
+    })();
+    </script>
+    <style>
+      .heart-layer{position:fixed;inset:0;pointer-events:none;z-index:10020}
+      .heart{position:absolute;width:36px;height:36px;transform-origin:center;will-change:transform,opacity;display:inline-block;pointer-events:none;user-select:none;animation: rise 1200ms cubic-bezier(.22,.9,.35,1) forwards}
+      .heart svg{width:100%;height:100%;display:block}
+      @keyframes rise{0%{transform:translateY(0) scale(.9) rotate(0);opacity:1;filter:drop-shadow(0 6px 10px rgba(0,0,0,.45))}40%{transform:translateY(-40px) scale(1.15) rotate(12deg);opacity:1}100%{transform:translateY(-160px) scale(.85) rotate(-25deg);opacity:0}}
+      .heart.small{width:22px;height:22px}.heart.large{width:48px;height:48px}
+      .heart.pop{animation-name:popRise}
+      @keyframes popRise{0%{transform:translateY(0) scale(0) rotate(0);opacity:0}15%{transform:translateY(-6px) scale(1.25) rotate(8deg);opacity:1}100%{transform:translateY(-160px) scale(.85) rotate(-25deg);opacity:0}}
+    </style>
+    <script>
+      (function(){
+        const startBtn = document.getElementById('startPoemBtn');
+        const welcome = document.getElementById('welcomeScreen');
+        const poemScreen = document.getElementById('poemScreen');
+        const floatingAvatar = document.getElementById('floatingAvatar');
+        const likeBtn = document.getElementById('likeBtn');
+        const audio = document.getElementById('poemAudio');
+        const shareText = encodeURIComponent("Me encantó tu poema ✨ \"Antes de las Palabras\"");
+        startBtn.addEventListener('click', () => {
+          welcome.style.transition = 'opacity .45s ease, transform .45s ease';
+          welcome.style.opacity = '0';
+          welcome.style.transform = 'translateY(-10px) scale(.995)';
+          setTimeout(() => {
+            welcome.style.display = 'none';
+            poemScreen.classList.add('show');
+            floatingAvatar.style.display = 'block';
+            floatingAvatar.classList.add('large');
+            likeBtn.style.display = 'inline-block';
+            document.getElementById('poemPanel').focus();
+            audio.currentTime = 0;
+            audio.play().catch(err => { console.log("Autoplay bloqueado.", err); });
+            floatingAvatar.style.transform = 'translateY(-4px)';
+            setTimeout(()=> floatingAvatar.style.transform = 'translateY(0px)', 300);
+          }, 420);
+        });
+        likeBtn.addEventListener('click', () => {
+          const url = `https://wa.me/?text=${shareText}`;
+          window.open(url, '_blank');
+        });
+        floatingAvatar.addEventListener('click', () => {
+          if (audio.paused) audio.play().catch(()=>{});
+          else audio.pause();
+        });
+        function adaptAvatar(){
+          const w = window.innerWidth;
+          if (w < 520){
+            floatingAvatar.style.right = '12px';
+            floatingAvatar.style.top = '12px';
+            floatingAvatar.style.width = '88px';
+            floatingAvatar.style.height = '88px';
+          } else {
+            floatingAvatar.style.right = '24px';
+            floatingAvatar.style.top = '20px';
+          }
+        }
+        window.addEventListener('resize', adaptAvatar);
+        adaptAvatar();
+      })();
+    </script>
+  </div>
 </body>
 </html>
+
