@@ -3,18 +3,27 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>FuturLove - Poema</title>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+<title>FuturLove - Poema Especial</title>
+<!-- Agregamos más fuentes para darle un toque más poético y legible -->
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Dancing+Script:wght@700&family=Nunito:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
   /* Reset y estilos base */
   *{box-sizing:border-box;margin:0;padding:0}
   html,body{height:100%}
   body{
-    font-family: 'Orbitron', sans-serif;
-    /* CAMBIO: Paleta de colores romántica */
-    background: linear-gradient(135deg,#4a003d,#7d0069,#ff1e56);
+    font-family: 'Nunito', sans-serif;
+    /* MEJORA: Fondo animado para mayor dinamismo */
+    background: linear-gradient(-45deg, #4a003d, #7d0069, #ff1e56, #2d0036);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
     color:#fff;
     overflow:hidden;
+  }
+
+  @keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
   }
 
   /* Contenedor general */
@@ -35,25 +44,27 @@
     flex-direction:column;
     align-items:center;
     justify-content:center;
-    gap:18px;
+    gap:22px;
     z-index:8;
     padding:26px;
     text-align:center;
-    /* CAMBIO: Fondo con tinte púrpura/rosado */
-    background: linear-gradient(180deg, rgba(40,0,30,0.25), rgba(60,0,40,0.15));
-    backdrop-filter: blur(6px);
+    background: linear-gradient(180deg, rgba(40,0,30,0.3), rgba(60,0,40,0.2));
+    backdrop-filter: blur(8px);
+    transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .welcome-title{
+    font-family: 'Orbitron', sans-serif;
     font-size:2.2rem;
-    line-height:1.05;
-    /* CAMBIO: Degradado de texto más romántico */
-    background: linear-gradient(45deg,#ff1e56,#ff4fa2,#9b1fff);
-    background-size:400% 400%;
+    line-height:1.2;
+    background: linear-gradient(45deg,#ff1e56,#ffb8d2,#9b1fff);
+    background-size:300% 300%;
     -webkit-background-clip:text;
     -webkit-text-fill-color:transparent;
-    animation: shine 8s ease infinite;
+    animation: shine 6s ease infinite;
+    text-shadow: 0 0 20px rgba(255, 30, 86, 0.2);
   }
+
   @keyframes shine{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
 
   .welcome-image-large{
@@ -61,43 +72,57 @@
     height:220px;
     border-radius:50%;
     overflow:hidden;
-    border:4px solid rgba(255,255,255,0.12);
-    /* CAMBIO: Sombra e iluminación con animación de latido */
-    box-shadow: 0 0 25px rgba(255,0,100,0.4), inset 0 0 15px rgba(255,0,150,0.2);
+    border:4px solid rgba(255,255,255,0.15);
+    box-shadow: 0 0 35px rgba(255,0,100,0.5), inset 0 0 20px rgba(255,0,150,0.3);
     animation: heartbeat 2.5s ease-in-out infinite;
   }
   .welcome-image-large img{width:100%;height:100%;object-fit:cover;display:block}
 
-  /* NUEVO: Animación de latido e iluminación */
   @keyframes heartbeat {
     0%   { transform: scale(1); box-shadow: 0 0 25px rgba(255,0,100,0.4), inset 0 0 15px rgba(255,0,150,0.2); }
-    14%  { transform: scale(1.05); box-shadow: 0 0 35px rgba(255,0,100,0.6), inset 0 0 20px rgba(255,0,150,0.3); }
+    14%  { transform: scale(1.05); box-shadow: 0 0 45px rgba(255,0,100,0.7), inset 0 0 25px rgba(255,0,150,0.4); }
     28%  { transform: scale(1); box-shadow: 0 0 25px rgba(255,0,100,0.4), inset 0 0 15px rgba(255,0,150,0.2); }
-    42%  { transform: scale(1.05); box-shadow: 0 0 35px rgba(255,0,100,0.6), inset 0 0 20px rgba(255,0,150,0.3); }
+    42%  { transform: scale(1.05); box-shadow: 0 0 45px rgba(255,0,100,0.7), inset 0 0 25px rgba(255,0,150,0.4); }
     70%  { transform: scale(1); box-shadow: 0 0 25px rgba(255,0,100,0.4), inset 0 0 15px rgba(255,0,150,0.2); }
   }
 
   .entry-text{
     max-width:760px;
-    font-family: 'Arial', sans-serif;
-    color: rgba(255,220,240,0.9);
-    font-size:1rem;
+    font-size:1.15rem;
+    color: rgba(255,230,245,0.95);
+    font-weight: 300;
+    line-height: 1.6;
     opacity:0.95;
+  }
+  .entry-text strong {
+    color: #ff6b85;
+    font-weight: 600;
   }
 
   .start-btn{
-    padding:14px 30px;
-    border-radius:14px;
+    padding:16px 36px;
+    border-radius:20px;
     border:none;
     cursor:pointer;
-    font-size:1rem;
+    font-size:1.1rem;
+    font-weight: bold;
     color:#fff;
-    /* CAMBIO: Degradado y sombra del botón */
-    background: linear-gradient(45deg,#ff1e56,#ff4fa2,#9b1fff);
-    box-shadow: 0 0 25px rgba(255,0,128,0.7);
-    transition: transform .15s;
+    background: linear-gradient(45deg,#ff1e56,#ff4fa2);
+    box-shadow: 0 10px 25px rgba(255,0,128,0.5);
+    transition: all .3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    animation: pulseBtn 2s infinite;
   }
-  .start-btn:active{transform:scale(.98)}
+  .start-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(255,0,128,0.7);
+  }
+  .start-btn:active{transform:scale(.95) translateY(0);}
+
+  @keyframes pulseBtn {
+    0% { box-shadow: 0 0 0 0 rgba(255, 30, 86, 0.7); }
+    70% { box-shadow: 0 0 0 15px rgba(255, 30, 86, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 30, 86, 0); }
+  }
 
   /* Panel del poema */
   .poem-screen{
@@ -110,40 +135,69 @@
     z-index:2;
     visibility:hidden;
     opacity:0;
-    transition: opacity .5s ease, visibility .5s ease;
+    transition: opacity .8s ease, visibility .8s ease;
   }
   .poem-screen.show{visibility:visible;opacity:1;z-index:9}
 
   .poem-panel{
     width:min(880px,92%);
     max-height:84vh;
-    /* CAMBIO: Fondo, borde y sombra del panel */
-    background: rgba(255,80,140,0.07);
-    border-radius:18px;
-    padding:28px;
-    border:1px solid rgba(255,120,180,0.15);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 10px 30px rgba(100,0,50,0.6);
-    overflow:auto;
+    background: rgba(40, 0, 20, 0.4);
+    border-radius:24px;
+    padding:40px;
+    border:1px solid rgba(255,120,180,0.25);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 15px 50px rgba(0,0,0,0.5), inset 0 0 20px rgba(255, 50, 100, 0.1);
+    overflow-y:auto;
     position:relative;
+    scroll-behavior: smooth;
   }
 
+  /* MEJORA: Scrollbar personalizado */
+  .poem-panel::-webkit-scrollbar { width: 6px; }
+  .poem-panel::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); border-radius: 10px; }
+  .poem-panel::-webkit-scrollbar-thumb { background: linear-gradient(180deg, #ff1e56, #ff4fa2); border-radius: 10px; }
+
   .poem-title{
-    font-size:1.6rem;
-    margin-bottom:12px;
-    /* CAMBIO: Degradado del título */
-    background: linear-gradient(45deg,#ff1e56,#ff4fa2,#9b1fff);
+    font-family: 'Dancing Script', cursive;
+    font-size:3.5rem;
+    margin-bottom:20px;
+    text-align: center;
+    background: linear-gradient(45deg,#ff6b85,#ffb8d2,#ff4fa2);
     -webkit-background-clip:text;
     -webkit-text-fill-color:transparent;
     font-weight:700;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
   }
 
   .poem-content{
-    font-family: 'Arial', sans-serif;
-    color:rgba(255,240,245,0.95);
-    line-height:1.8;
-    font-size:1.05rem;
+    color:rgba(255,245,250,0.95);
+    line-height:1.9;
+    font-size:1.15rem;
     padding-right:10px;
+    text-align: justify;
+  }
+
+  .poem-content p {
+    margin-bottom: 24px;
+    /* MEJORA: Animación de entrada de los párrafos */
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  .poem-screen.show .poem-content p {
+    animation: fadeInUp 0.8s ease forwards;
+  }
+
+  /* Staggered animation para cada párrafo */
+  .poem-screen.show .poem-content p:nth-child(1) { animation-delay: 0.6s; }
+  .poem-screen.show .poem-content p:nth-child(2) { animation-delay: 1.2s; }
+  .poem-screen.show .poem-content p:nth-child(3) { animation-delay: 1.8s; }
+  .poem-screen.show .poem-content p:nth-child(4) { animation-delay: 2.4s; }
+  .poem-screen.show .poem-content p:nth-child(5) { animation-delay: 3.0s; }
+
+  @keyframes fadeInUp {
+    to { opacity: 1; transform: translateY(0); }
   }
 
   /* Imagen flotante */
@@ -155,37 +209,55 @@
     overflow:hidden;
     right:28px;
     top:28px;
-    border:3px solid rgba(255,255,255,0.15);
-    /* CAMBIO: Sombra del avatar y animación */
+    border:3px solid rgba(255,255,255,0.2);
     box-shadow: 0 6px 18px rgba(255,0,100,0.5), 0 0 30px rgba(255,0,150,0.45);
-    transition: width .45s ease, height .45s ease, right .45s ease, top .45s ease, transform .35s ease;
+    transition: all .5s cubic-bezier(0.4, 0, 0.2, 1);
     z-index:11;
     display:none;
+    cursor: pointer;
     background:linear-gradient(180deg, rgba(255,40,100,0.2), rgba(255,100,180,0.1));
-    animation: heartbeat 2.5s ease-in-out infinite; /* Animación aplicada también aquí */
+    animation: heartbeat 2.5s ease-in-out infinite;
   }
   .floating-avatar img{width:100%;height:100%;object-fit:cover;display:block}
+  .floating-avatar:hover { transform: scale(1.1) !important; }
 
-  .floating-avatar.large{ width:110px; height:110px; right:24px; top:20px; }
+  .floating-avatar.large{ width:100px; height:100px; right:30px; top:30px; }
 
-  /* Botón flotante "Me gustó" (ya tenía buen color) */
+  /* Botón flotante "Me gustó" */
   .like-btn{
     position:fixed;
     right:28px;
     bottom:28px;
     z-index:12;
-    padding:12px 16px;
+    padding:14px 22px;
     border-radius:999px;
     border:none;
-    font-size:1rem;
-    background: linear-gradient(45deg,#ff1e56,#ff66aa);
+    font-size:1.1rem;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    /* CAMBIO: Colores rojo/rosado en lugar de verde */
+    background: linear-gradient(45deg,#ff1e56,#ff6b85); 
     color:#fff;
-    box-shadow: 0 8px 24px rgba(255,0,120,0.4);
+    /* CAMBIO: Sombra en tonos rosados/rojos */
+    box-shadow: 0 8px 25px rgba(255, 30, 86, 0.5);
     cursor:pointer;
     display:none;
+    transition: all 0.3s;
+    animation: floatBtn 3s ease-in-out infinite;
+  }
+  .like-btn:hover {
+    transform: scale(1.05) translateY(-5px);
+    /* CAMBIO: Sombra más intensa en hover */
+    box-shadow: 0 12px 30px rgba(255, 30, 86, 0.7);
+  }
+  
+  @keyframes floatBtn {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+    100% { transform: translateY(0px); }
   }
 
-  /* Contenedor de circulitos de fondo */
+  /* Contenedor de circulitos de fondo (efecto Bokeh) */
   .circulos{
     position:fixed;
     inset:0;
@@ -196,23 +268,31 @@
     position:absolute;
     display:block;
     width:20px;height:20px;
-    /* CAMBIO: Color de los círculos */
-    background: rgba(255,0,100,0.15);
+    background: rgba(255, 50, 120, 0.2);
     border-radius:50%;
+    filter: blur(4px);
     animation: flotar 20s linear infinite;
   }
-  .circulos span:nth-child(1) { left: 25%; animation-delay: 0s; top: 90%; }
-  .circulos span:nth-child(2) { left: 10%; animation-delay: 2s; top: 95%; }
-  .circulos span:nth-child(3) { left: 70%; animation-delay: 4s; top: 92%; }
-  .circulos span:nth-child(4) { left: 40%; animation-delay: 1s; top: 98%; }
-  .circulos span:nth-child(5) { left: 90%; animation-delay: 3s; top: 97%; }
-  @keyframes flotar{0%{transform:translateY(0) scale(1);opacity:1}100%{transform:translateY(-1000px) scale(1.5);opacity:0}}
+  .circulos span:nth-child(1) { left: 25%; width:40px; height:40px; animation-delay: 0s; top: 110%; animation-duration: 15s;}
+  .circulos span:nth-child(2) { left: 10%; width:20px; height:20px; animation-delay: 2s; top: 110%; animation-duration: 25s;}
+  .circulos span:nth-child(3) { left: 70%; width:30px; height:30px; animation-delay: 4s; top: 110%; animation-duration: 20s;}
+  .circulos span:nth-child(4) { left: 40%; width:50px; height:50px; animation-delay: 1s; top: 110%; animation-duration: 18s;}
+  .circulos span:nth-child(5) { left: 85%; width:25px; height:25px; animation-delay: 3s; top: 110%; animation-duration: 22s;}
+  .circulos span:nth-child(6) { left: 55%; width:35px; height:35px; animation-delay: 6s; top: 110%; animation-duration: 19s;}
+  
+  @keyframes flotar{
+    0%{transform:translateY(0) scale(1) rotate(0deg);opacity:1}
+    100%{transform:translateY(-1200px) scale(1.5) rotate(360deg);opacity:0}
+  }
 
-  /* Pequeños ajustes responsive */
+  /* Ajustes responsive */
   @media (max-width:540px){
-    .welcome-image-large{width:150px;height:150px}
-    .floating-avatar.large{ right:12px; top:12px; width:88px; height:88px }
-    .poem-panel{ padding:18px }
+    .welcome-title { font-size: 1.8rem; }
+    .welcome-image-large{width:160px;height:160px}
+    .floating-avatar.large{ right:16px; top:16px; width:75px; height:75px }
+    .poem-panel{ padding:25px 20px; }
+    .poem-title { font-size: 2.5rem; }
+    .poem-content { font-size: 1.05rem; }
   }
 </style>
 </head>
@@ -220,103 +300,67 @@
   <div class="app">
 
     <div class="circulos" aria-hidden="true">
-      <span></span><span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span><span></span><span></span>
     </div>
 
     <section class="welcome-screen" id="welcomeScreen">
-      <h1 class="welcome-title">Para la persona muy muy especial la que está aquí abajito ☺️☺️</h1>
+      <h1 class="welcome-title">Para la persona muy muy especial, la que está aquí abajito ☺️☺️</h1>
 
       <div class="welcome-image-large" id="welcomeImage">
         <img src="https://i.ibb.co/QvqFTD0p/Messenger-creation-99229-E80-FC1-C-422-F-82-E6-771-EB6-BA4-AC2.jpg" alt="Portada">
       </div>
 
       <p class="entry-text">
-        Si quieres, puedes cerrar los ojos un instante y dejar que las palabras lleguen. 
-        Cuando estés listo, pulsa <strong>"El botoncito de abajo ☺️"</strong> y deja que mis palabritas te digan algo muy especial 
+        Si quieres, puedes cerrar los ojos un instante y dejar que las palabras lleguen.<br>
+        Cuando estés lista, pulsa <strong>"El botoncito de abajo ☺️"</strong> y deja que mis palabritas te digan algo muy especial.
       </p>
 
-      <button class="start-btn" id="startPoemBtn">Empezar la Poema</button>
+      <button class="start-btn" id="startPoemBtn">Empezar el Poema</button>
     </section>
 
     <section class="poem-screen" id="poemScreen" aria-hidden="true">
       <article class="poem-panel" id="poemPanel" tabindex="0">
         <h2 class="poem-title">Antes de las Palabras</h2>
         <div class="poem-content" id="poemContent">
-          <p>Recuerdo el silencio que nos separó,
-un silencio de dos años, tan pesado, tan largo.<br>
-          En la distancia, el tiempo se estiró,
-y a veces creí que el recuerdo de nosotros se había esfumado.
-No hubo peleas ni palabras duras, solo un adiós sin aviso,<br>
-          un final inesperado para una historia que apenas comenzaba.
-Cada día fue una batalla, una lucha por olvidar,<br>
-          pero por más que lo intentaba, tu imagen seguía ahí,
-intacta, en lo más profundo de mi ser.</p>
-          <p>Y de repente, como un milagro, volviste.
-Cuando nuestros ojos se encontraron de nuevo,
-el mundo se detuvo.
-Las universidades, los kilómetros, el tiempo...<br>
-          todo desapareció.
-En ese instante, solo existías tú,
-con esa sonrisa que aún me desarma,
-y esos ojos que siempre he considerado mi hogar.
-Verte de nuevo fue como ver el amanecer después de una larga noche<br>
-          como respirar después de haber estado conteniendo el aire.
-Fue la confirmación de que este sentimiento nunca murió,
-solo estaba esperando el momento de despertar.<br>
-          Recuerdo cómo me llenaba de vida tu presencia en el pasado.
-Cómo con una simple mirada, mis preocupaciones desaparecían.
-Y ahora, con esta nueva conexión,
-siento que todo ha cobrado un nuevo sentido.</p>
-          <p>No quiero que esto sea un recuerdo más en nuestra historia,
-no quiero que la distancia nos vuelva a separar.
-No voy a permitirlo.
-Quiero que sepas que en cada uno de mis días,
-me llenas de una felicidad tan intensa,
-que por primera vez en mucho tiempo<br>
-          no tengo miedo de lo que vendrá.
-Quiero crear contigo una historia diferente, una historia sin pausas,
-sin despedidas, una historia que perdure para siempre.<br>
-         No puedo prometerte que no habrá desafíos,
-pero sí puedo prometerte que nunca te sentirás sola.
-Aunque estemos en universidades distintas, a kilómetros de distancia,
-siempre voy a estar ahí para ti.
-Quiero que te sientas segura conmigo,
-que sepas que mi corazón es tu refugio,<br>
-          un lugar donde puedes ser tú misma sin miedo a nada.
-Confía en mí, Judith, porque nunca,
-jamás, te decepcionaré.</p>
-          <p>Cuando te escribo, me imagino a ti,
-viendo tu sonrisa al leer mis mensajes,
-y me lleno de una alegría inmensa,
-una alegría que me dan ganas de gritar al mundo
-lo afortunado que soy de tenerte.
-Eres la calma en mi tormenta,
-el amor que necesito, la paz que me completa.<br>
-          Cada vez que me hablas de tus días, de tus sueños, de tus gustos como los pesitos, mi alma te abraza, mucho mucho 
-y me dan ganas de volar hasta donde estés y susurrarte al oído lo mucho que te quiero a mi lado.<br>
-          Prometo que haremos que cada momento cuente,
-que los encuentros cortos se conviertan en nuestra aventura,
-y que cada mensaje sea un puente entre nuestros corazones.
-Estoy dispuesto a construir un futuro contigo,<br>
-          a escribir cada capítulo juntos,
-a llenar cada página con risas,
-con besitos ☺️☺️ y con sueños compartidos.</p>
-          <p>Me gustaría que me des la oportunidad
-de enamorarte 😊😊 a un que no sepa nada de eso, cada día, te demostrare a mi estilo que este sentimiento  es real y que no tiene límites.🥹🥹😍
-Quiero que el mundo entero sepa lo que siento por ti, yo seré yo mismo contigo e me gustaría que tú seas tu 🥹!No me importa,yo, ya, decidí estar contigo y estar a tu lado¡ y compartir contigo los más bellos atardeceres,
-las más hermosas noches estrelladas.<br>
-          Porque cuando me miras, Judith, siento que este sentimiento crece mucho mucho no es una casualidad, sino el destino que por fin nos da una segunda oportunidad. Quiero que sepas, Judith, que estoy aquí para quedarme.<br>
-          te mando 😊😊 más puro "te quiero" que nunca se ha dicho,<br>
+          <p>Recuerdo el silencio que nos separó, un silencio de dos años, tan pesado, tan largo.<br>
+          En la distancia, el tiempo se estiró, y a veces creí que el recuerdo de nosotros se había esfumado. No hubo peleas ni palabras duras, solo un adiós sin aviso,<br>
+          un final inesperado para una historia que apenas comenzaba. Cada día fue una batalla, una lucha por olvidar,<br>
+          pero por más que lo intentaba, tu imagen seguía ahí, intacta, en lo más profundo de mi ser.</p>
+          
+          <p>Y de repente, como un milagro, volviste. Cuando nuestros ojos se encontraron de nuevo, el mundo se detuvo. Las universidades, los kilómetros, el tiempo...<br>
+          todo desapareció. En ese instante, solo existías tú, con esa sonrisa que aún me desarma, y esos ojos que siempre he considerado mi hogar. Verte de nuevo fue como ver el amanecer después de una larga noche,<br>
+          como respirar después de haber estado conteniendo el aire. Fue la confirmación de que este sentimiento nunca murió, solo estaba esperando el momento de despertar.<br>
+          Recuerdo cómo me llenaba de vida tu presencia en el pasado. Cómo con una simple mirada, mis preocupaciones desaparecían. Y ahora, con esta nueva conexión, siento que todo ha cobrado un nuevo sentido.</p>
+          
+          <p>No quiero que esto sea un recuerdo más en nuestra historia, no quiero que la distancia nos vuelva a separar. No voy a permitirlo. Quiero que sepas que en cada uno de mis días, me llenas de una felicidad tan intensa, que por primera vez en mucho tiempo<br>
+          no tengo miedo de lo que vendrá. Quiero crear contigo una historia diferente, una historia sin pausas, sin despedidas, una historia que perdure para siempre.<br>
+          No puedo prometerte que no habrá desafíos, pero sí puedo prometerte que nunca te sentirás sola. Aunque estemos en universidades distintas, a kilómetros de distancia, siempre voy a estar ahí para ti. Quiero que te sientas segura conmigo, que sepas que mi corazón es tu refugio,<br>
+          un lugar donde puedes ser tú misma sin miedo a nada. Confía en mí, Judith, porque nunca, jamás, te decepcionaré.</p>
+          
+          <p>Cuando te escribo, me imagino a ti, viendo tu sonrisa al leer mis mensajes, y me lleno de una alegría inmensa, una alegría que me dan ganas de gritar al mundo lo afortunado que soy de tenerte. Eres la calma en mi tormenta, el amor que necesito, la paz que me completa.<br>
+          Cada vez que me hablas de tus días, de tus sueños, de tus gustos como los perritos, mi alma te abraza, mucho mucho<br>
+          y me dan ganas de volar hasta donde estés y susurrarte al oído lo mucho que te quiero a mi lado.<br>
+          Prometo que haremos que cada momento cuente, que los encuentros cortos se conviertan en nuestra aventura, y que cada mensaje sea un puente entre nuestros corazones. Estoy dispuesto a construir un futuro contigo,<br>
+          a escribir cada capítulo juntos, a llenar cada página con risas, con besitos ☺️☺️ y con sueños compartidos.</p>
+          
+          <p>Me gustaría que me des la oportunidad de enamorarte 😊😊 aún que no sepa nada de eso, cada día, te demostraré a mi estilo que este sentimiento es real y que no tiene límites. 🥹🥹😍<br>
+          Quiero que el mundo entero sepa lo que siento por ti, yo seré yo mismo contigo y me gustaría que tú seas tú 🥹 ¡No me importa, yo ya decidí estar contigo y estar a tu lado! y compartir contigo los más bellos atardeceres, las más hermosas noches estrelladas.<br>
+          Porque cuando me miras, Judith, siento que este sentimiento crece mucho mucho, no es una casualidad, sino el destino que por fin nos da una segunda oportunidad. Quiero que sepas, Judith, que estoy aquí para quedarme.<br>
+          Te mando 😊😊 el más puro "te quiero" que nunca se ha dicho,<br>
           pero que el corazón, a gritos, sintió.</p>
         </div>
       </article>
     </section>
 
-    <div class="floating-avatar" id="floatingAvatar" aria-hidden="true">
+    <div class="floating-avatar" id="floatingAvatar" aria-hidden="true" title="Pausar/Reproducir Música">
       <img src="https://i.ibb.co/QvqFTD0p/Messenger-creation-99229-E80-FC1-C-422-F-82-E6-771-EB6-BA4-AC2.jpg" alt="Avatar">
     </div>
 
-    <button class="like-btn" id="likeBtn" title="Enviar en WhatsApp">💖 Me gustó</button>
+    <!-- MEJORA: Botón configurado para WhatsApp -->
+    <button class="like-btn" id="likeBtn" title="Responder en WhatsApp">
+      <svg style="width:20px; height:20px; vertical-align: middle; margin-right: 6px; fill: white;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+      SÍ ME GUSTÓ
+    </button>
 
     <audio id="poemAudio" preload="auto">
       <source src="https://www.dropbox.com/scl/fi/x7alx08aam4ez70h4ayy5/Rema-Selena-Gomez-Calm-Down-Remix-Lyrics-Espa-ol-Video-Official.mp3?rlkey=w5ia29h0zgmr2phb6k03sx7bl&dl=1" type="audio/mpeg">
@@ -327,6 +371,7 @@ las más hermosas noches estrelladas.<br>
     <div class="center-note" style="display:none">Toca / haz clic en cualquier parte 💖</div>
 
     <script>
+    // Sistema de partículas de corazones al hacer clic
     (function(){
       const layer = document.getElementById('heartLayer');
       const COLORS = ["#ff4d6d","#ff6b85","#ff7ab6","#ff9ad0","#ffb3c7","#ff758f","#ff5f7a","#ff8fb1"];
@@ -363,21 +408,29 @@ las más hermosas noches estrelladas.<br>
           createHeart(rx, ry);
         }
       }
-      window.addEventListener('click', (e) => { handlePointer(e.clientX, e.clientY); });
-      window.addEventListener('touchstart', (e) => { [...e.touches].forEach(t => handlePointer(t.clientX,t.clientY)) },{passive:true});
-      window.addEventListener('touchmove', (e) => { [...e.touches].forEach(t => { if (Math.random() < 0.18) handlePointer(t.clientX, t.clientY) }) },{passive:true});
+      window.addEventListener('click', (e) => { 
+        // No crear corazones si se hace click en botones
+        if(e.target.closest('button') || e.target.closest('.floating-avatar')) return;
+        handlePointer(e.clientX, e.clientY); 
+      });
+      window.addEventListener('touchstart', (e) => { 
+        if(e.target.closest('button') || e.target.closest('.floating-avatar')) return;
+        [...e.touches].forEach(t => handlePointer(t.clientX,t.clientY)) 
+      },{passive:true});
     })();
     </script>
     <style>
       .heart-layer{position:fixed;inset:0;pointer-events:none;z-index:10020}
       .heart{position:absolute;width:36px;height:36px;transform-origin:center;will-change:transform,opacity;display:inline-block;pointer-events:none;user-select:none;animation: rise 1200ms cubic-bezier(.22,.9,.35,1) forwards}
-      .heart svg{width:100%;height:100%;display:block}
-      @keyframes rise{0%{transform:translateY(0) scale(.9) rotate(0);opacity:1;filter:drop-shadow(0 6px 10px rgba(0,0,0,.45))}40%{transform:translateY(-40px) scale(1.15) rotate(12deg);opacity:1}100%{transform:translateY(-160px) scale(.85) rotate(-25deg);opacity:0}}
+      .heart svg{width:100%;height:100%;display:block; filter: drop-shadow(0 2px 4px rgba(255,0,100,0.4));}
+      @keyframes rise{0%{transform:translateY(0) scale(.9) rotate(0);opacity:1;}40%{transform:translateY(-40px) scale(1.15) rotate(12deg);opacity:1}100%{transform:translateY(-160px) scale(.85) rotate(-25deg);opacity:0}}
       .heart.small{width:22px;height:22px}.heart.large{width:48px;height:48px}
       .heart.pop{animation-name:popRise}
       @keyframes popRise{0%{transform:translateY(0) scale(0) rotate(0);opacity:0}15%{transform:translateY(-6px) scale(1.25) rotate(8deg);opacity:1}100%{transform:translateY(-160px) scale(.85) rotate(-25deg);opacity:0}}
     </style>
+    
     <script>
+      // Lógica de navegación y botones
       (function(){
         const startBtn = document.getElementById('startPoemBtn');
         const welcome = document.getElementById('welcomeScreen');
@@ -385,49 +438,77 @@ las más hermosas noches estrelladas.<br>
         const floatingAvatar = document.getElementById('floatingAvatar');
         const likeBtn = document.getElementById('likeBtn');
         const audio = document.getElementById('poemAudio');
-        const shareText = encodeURIComponent("Me encantó tu poema ✨ \"Antes de las Palabras\"");
+        
+        // CONFIGURACIÓN DE WHATSAPP CON TU NÚMERO
+        // Agregué '591' al principio porque es el código de país (Bolivia) que requiere WhatsApp
+        const phoneNumber = "59176797842"; 
+        const shareText = encodeURIComponent("SI ME GUSTO GGG");
+
         startBtn.addEventListener('click', () => {
-          welcome.style.transition = 'opacity .45s ease, transform .45s ease';
           welcome.style.opacity = '0';
-          welcome.style.transform = 'translateY(-10px) scale(.995)';
+          welcome.style.transform = 'translateY(-20px) scale(0.95)';
+          
           setTimeout(() => {
             welcome.style.display = 'none';
             poemScreen.classList.add('show');
             floatingAvatar.style.display = 'block';
-            floatingAvatar.classList.add('large');
-            likeBtn.style.display = 'inline-block';
+            setTimeout(() => floatingAvatar.classList.add('large'), 100);
+            
+            // Retrasar la aparición del botón de WhatsApp para que ella lea el poema primero
+            setTimeout(() => {
+              likeBtn.style.display = 'inline-flex';
+              likeBtn.style.alignItems = 'center';
+            }, 6000); 
+
             document.getElementById('poemPanel').focus();
             audio.currentTime = 0;
+            audio.volume = 0.5; // Volumen un poco más suave
             audio.play().catch(err => { console.log("Autoplay bloqueado.", err); });
-            floatingAvatar.style.transform = 'translateY(-4px)';
-            setTimeout(()=> floatingAvatar.style.transform = 'translateY(0px)', 300);
-          }, 420);
+          }, 600);
         });
+
+        // Evento botón de WhatsApp
         likeBtn.addEventListener('click', () => {
-          const url = `https://wa.me/?text=${shareText}`;
+          const url = `https://wa.me/${phoneNumber}?text=${shareText}`;
           window.open(url, '_blank');
         });
+
+        // Play/Pause al tocar el avatar
         floatingAvatar.addEventListener('click', () => {
-          if (audio.paused) audio.play().catch(()=>{});
-          else audio.pause();
+          if (audio.paused) {
+            audio.play().catch(()=>{});
+            floatingAvatar.style.animation = "heartbeat 2.5s ease-in-out infinite";
+          } else {
+            audio.pause();
+            floatingAvatar.style.animation = "none";
+            // Un pequeño efecto visual al pausar
+            floatingAvatar.style.transform = "scale(0.95)";
+            setTimeout(() => floatingAvatar.style.transform = "scale(1)", 200);
+          }
         });
+
+        // Adaptación del avatar en móviles
         function adaptAvatar(){
           const w = window.innerWidth;
           if (w < 520){
-            floatingAvatar.style.right = '12px';
-            floatingAvatar.style.top = '12px';
-            floatingAvatar.style.width = '88px';
-            floatingAvatar.style.height = '88px';
+            if(floatingAvatar.classList.contains('large')){
+              floatingAvatar.style.right = '16px';
+              floatingAvatar.style.top = '16px';
+              floatingAvatar.style.width = '75px';
+              floatingAvatar.style.height = '75px';
+            }
           } else {
-            floatingAvatar.style.right = '24px';
-            floatingAvatar.style.top = '20px';
+            if(floatingAvatar.classList.contains('large')){
+              floatingAvatar.style.right = '30px';
+              floatingAvatar.style.top = '30px';
+              floatingAvatar.style.width = '100px';
+              floatingAvatar.style.height = '100px';
+            }
           }
         }
         window.addEventListener('resize', adaptAvatar);
-        adaptAvatar();
       })();
     </script>
   </div>
 </body>
 </html>
-
